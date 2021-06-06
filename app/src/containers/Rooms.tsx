@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    typing,
-    getRooms,
-    addRoom,
-    editRoom,
-    deleteRoom
-} from '../actions/room';
+import { typing, getRooms, addRoom, editRoom, deleteRoom } from '../actions/room';
 import { RootState } from '../reducers';
 
 import WorkArea from '../components/WorkArea';
 import { IRoom } from 'src/reducers/rooms';
 
 import { useHistory } from 'react-router-dom';
-
 
 const Rooms = () => {
     const [edit, setEdit] = React.useState(false);
@@ -28,7 +21,6 @@ const Rooms = () => {
     const dispatchEditRoom = (data: IRoom) => dispatch(editRoom(data));
     const dispatchDeleteRoom = (data: IRoom) => dispatch(deleteRoom(data));
     const dispatchGetRooms = () => dispatch(getRooms());
-
 
     const handleAddClick = () => {
         dispatchTyping({ number: "" } as IRoom);
@@ -61,7 +53,7 @@ const Rooms = () => {
 
             default:
                 break;
-        };
+        }
 
         setEdit(false);
     };
@@ -74,7 +66,6 @@ const Rooms = () => {
 
     useEffect(() => {
         console.log("Rooms_render");
-
     });
 
     const handleDeleteClick = (object: IRoom) => {

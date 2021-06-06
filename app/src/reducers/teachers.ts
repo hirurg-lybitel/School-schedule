@@ -2,9 +2,9 @@ import { AnyAction, combineReducers } from 'redux';
 import * as types from "../types";
 
 export interface ITeacher {
-    id?: string
-    _id?: string
-    name: string
+    id?: string;
+    _id?: string;
+    name: string;
 }
 
 const teacher = (state: ITeacher, action: AnyAction) => {
@@ -26,7 +26,7 @@ const teachers = (state: ITeacher[] = [], action: AnyAction) => {
             return [...state, teacher(action.data, action)];
 
         case types.EDIT_TEACHER_SUCCESS:
-            return state.map((item) => item._id === action.data._id ? action.data : item);
+            return state.map((item) => (item._id === action.data._id ? action.data : item));
 
         case types.DELETE_TEACHER_REQUEST:
             return state.filter((item) => item._id !== action.id);
@@ -35,10 +35,7 @@ const teachers = (state: ITeacher[] = [], action: AnyAction) => {
     }
 };
 
-const newTeacher = (
-    state = '',
-    action: AnyAction
-) => {
+const newTeacher = (state = "", action: AnyAction) => {
     switch (action.type) {
         case types.TEACHER_TYPING:
             return action.newTeacher;
@@ -49,11 +46,9 @@ const newTeacher = (
     }
 };
 
-
 const teacherReducer = combineReducers({
     teachers,
-    newTeacher
+    newTeacher,
 });
-
 
 export default teacherReducer;

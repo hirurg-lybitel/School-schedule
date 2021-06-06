@@ -14,9 +14,8 @@ import { getTeachers } from "../actions/teacher";
 import { getRooms } from "../actions/room";
 import { getDashboard } from '../actions/dashboard';
 
-
 const MenuItems = (props) => {
-    const { handleChageTitle } = props
+    const { handleChageTitle } = props;
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -44,41 +43,25 @@ const MenuItems = (props) => {
 
     return (
         <div>
-            <ListItem
-                key="0"
-                button
-                onClick={handleDashboardClick}
-            >
+            <ListItem key="0" button onClick={handleDashboardClick}>
                 <ListItemIcon>
                     <DashboardIcon />
                 </ListItemIcon>
                 <ListItemText primary="Расписание" />
             </ListItem>
-            <ListItem
-                key="1"
-                button
-                onClick={handleSubjectClick}
-            >
+            <ListItem key="1" button onClick={handleSubjectClick}>
                 <ListItemIcon>
                     <SubjectIcon />
                 </ListItemIcon>
                 <ListItemText primary="Предметы" />
             </ListItem>
-            <ListItem
-                key="2"
-                button
-                onClick={handleTeacherClick}
-            >
+            <ListItem key="2" button onClick={handleTeacherClick}>
                 <ListItemIcon>
                     <PeopleIcon />
                 </ListItemIcon>
                 <ListItemText primary="Учителя" />
             </ListItem>
-            <ListItem
-                key="3"
-                button
-                onClick={handleRoomClick}
-            >
+            <ListItem key="3" button onClick={handleRoomClick}>
                 <ListItemIcon>
                     <MeetingRoomIcon />
                 </ListItemIcon>

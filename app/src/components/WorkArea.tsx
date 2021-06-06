@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import {
-    List, ListItem, ListItemText, Fab, Container, Button
-} from '@material-ui/core';
+import { List, ListItem, ListItemText, Fab, Container, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
@@ -29,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         height: '80vh',
-        maxWidth: '100%'
+        maxWidth: '100%',
     },
     button: {
         marginLeft: theme.spacing(2),
@@ -37,24 +35,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Props {
-    objects: ISubject[] | ITeacher[] | IRoom[],
-    newObject: ISubject | ITeacher | IRoom,
-    edit: boolean,
+    objects: ISubject[] | ITeacher[] | IRoom[];
+    newObject: ISubject | ITeacher | IRoom;
+    edit: boolean;
     onEntryChange: (value: any) => void;
     handleSaveClick: () => void;
     handleCancelClick: () => void;
-    handleAddClick: (value: ISubject | IRoom | ITeacher) => void,
-    handleEditClick: (value: any) => void,
-    handleDeleteClick: (value: any) => void,
-    inputError: boolean,
-    inputErrorText: string
-};
+    handleAddClick: (value: ISubject | IRoom | ITeacher) => void;
+    handleEditClick: (value: any) => void;
+    handleDeleteClick: (value: any) => void;
+    inputError: boolean;
+    inputErrorText: string;
+}
 
 const WorkArea: FC<Props> = ({
-    objects, newObject, edit, onEntryChange, handleSaveClick,
-    handleAddClick, handleEditClick, handleDeleteClick, handleCancelClick,
-    inputError, inputErrorText }) => {
-
+    objects,
+    newObject,
+    edit,
+    onEntryChange,
+    handleSaveClick,
+    handleAddClick,
+    handleEditClick,
+    handleDeleteClick,
+    handleCancelClick,
+    inputError,
+    inputErrorText,
+}) => {
     const classes = useStyles();
 
     const objectItems = objects.map((item, key) => {
@@ -91,8 +97,7 @@ const WorkArea: FC<Props> = ({
         case true:
             Elements = () => {
                 return (
-                    <Container
-                        className={classes.container}>
+                    <Container className={classes.container}>
                         <AddItem
                             object={newObject}
                             onEntryChange={onEntryChange}
@@ -102,18 +107,15 @@ const WorkArea: FC<Props> = ({
                             inputErrorText={inputErrorText}
                         />
                     </Container>
-                )
+                );
             };
 
             break;
         case false:
             Elements = () => {
                 return (
-                    <Container
-                        className={classes.container}>
-                        <List className={classes.list}>
-                            {objectItems}
-                        </List>
+                    <Container className={classes.container}>
+                        <List className={classes.list}>{objectItems}</List>
                         <Button
                             variant="contained"
                             className={classes.button}
@@ -124,16 +126,12 @@ const WorkArea: FC<Props> = ({
                             Добавить
                         </Button>
                     </Container>
-                )
+                );
             };
             break;
-
     }
 
-    return (
-        <Elements />
-    );
-
+    return <Elements />;
 };
 
 export default WorkArea;

@@ -5,7 +5,7 @@ export default () => {
     return {
         getRooms: () => apiService().getResource('/rooms'),
         addRoom: (data: IRoom) => {
-            return apiService().postResource(`/rooms`, data);
+            return apiService().postResource('/rooms', data);
         },
         editRoom: (data: IRoom) => {
             const id = data._id;
@@ -14,6 +14,6 @@ export default () => {
         deleteRoom: (data: IRoom) => {
             const id = data._id;
             return apiService().deleteResourse(`/rooms?id=${id}`);
-        }
+        },
     };
 };

@@ -5,7 +5,6 @@ import { createBrowserHistory, Location } from 'history';
 import configureStore from './store';
 import { ConnectedRouter } from 'connected-react-router';
 
-
 import App from "./pages/App";
 
 const initialState = window.__INITIAL_STATE__;
@@ -34,5 +33,6 @@ render(
         <ConnectedRouter history={history}>
             <App />
         </ConnectedRouter>
-    </Provider>, document.getElementById('root'),
+    </Provider>,
+    document.getElementById('root'),
 );

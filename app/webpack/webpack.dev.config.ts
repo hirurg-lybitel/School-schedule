@@ -23,11 +23,7 @@ const config: Configuration = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: [
-                            "@babel/preset-env",
-                            "@babel/preset-react",
-                            "@babel/preset-typescript",
-                        ],
+                        presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
                     },
                 },
             },
@@ -46,9 +42,9 @@ const config: Configuration = {
         historyApiFallback: true,
         port: 3000,
         open: true,
-        hot: true
+        hot: true,
     },
-    target: "web"
+    target: "web",
 };
 
 export default config;

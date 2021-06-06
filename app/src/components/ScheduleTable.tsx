@@ -1,7 +1,15 @@
 import React, { useEffect, FC } from "react";
 import {
-    Table, TableContainer, TableHead, TableRow,
-    TableCell, TableBody, Container, Paper, Button, IconButton
+    Table,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableBody,
+    Container,
+    Paper,
+    Button,
+    IconButton,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from "react-redux";
 import moment from 'moment';
@@ -17,17 +25,12 @@ import { ITeacher } from '../reducers/teachers';
 import { IRoom } from '../reducers/rooms';
 import { IDashboard } from '../reducers/dashboard';
 
-
 import { getRooms } from '../actions/room';
 import { getSubjects } from '../actions/subject';
 import { getTeachers } from '../actions/teacher';
-import {
-    typing, addDashboard, editDashboard, deleteDashboard
-} from '../actions/dashboard';
+import { typing, addDashboard, editDashboard, deleteDashboard } from '../actions/dashboard';
 
 import { RootState } from '../reducers';
-
-
 
 const useStyles = makeStyles((theme) => ({
     table: {
@@ -104,16 +107,15 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         float: "right",
     },
-    addIcon: {
-    },
+    addIcon: {},
     divButton: {
-        textAlign: "center"
-    }
+        textAlign: "center",
+    },
 }));
 
 interface Props {
     objects: IDashboard[];
-};
+}
 
 const SchedulteTable: FC<Props> = ({ objects }) => {
     const classes = useStyles();
@@ -134,7 +136,6 @@ const SchedulteTable: FC<Props> = ({ objects }) => {
     const dispathGetTeachers = () => dispatch(getSubjects());
     const dispathGetRSubjects = () => dispatch(getTeachers());
 
-
     const handleCardClick = (object: IDashboard) => {
         console.log("handleCardClick", object);
 
@@ -146,7 +147,7 @@ const SchedulteTable: FC<Props> = ({ objects }) => {
 
         setAddType(2);
         setEdit(true);
-    }
+    };
 
     const handleDialogCloseClick = () => {
         setEdit(false);
@@ -169,7 +170,7 @@ const SchedulteTable: FC<Props> = ({ objects }) => {
 
             default:
                 break;
-        };
+        }
 
         setEdit(false);
     };
@@ -198,28 +199,29 @@ const SchedulteTable: FC<Props> = ({ objects }) => {
     };
 
     /** Массив времени */
-    let hourArray = new Array();
+    let hourArray = [];
     for (let index = 8; index <= 22; index++) {
         hourArray.push(new Date(0, 0, 0, index, 0, 0));
-    };
-
+    }
 
     /** Чтобы не строился грид без данных */
     if (objects.length == 0) hourArray = [];
 
     const daysArray = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
     const currDate = new Date(onDate);
-    var numberOfDaysToAdd = 0;
+    const numberOfDaysToAdd = 0;
     currDate.setDate(currDate.getDate() + numberOfDaysToAdd);
 
     /** Получаем первый и последний день текущей недели */
-    const firstday = new Date(currDate.setDate(currDate.getDate() - (currDate.getDay() === 0 ? 6 : currDate.getDate())))
+    const firstday = new Date(
+        currDate.setDate(currDate.getDate() - (currDate.getDay() === 0 ? 6 : currDate.getDate())),
+    );
     console.log("firstday", firstday);
     const lastday = new Date(currDate.setDate(firstday.getDate() + 6));
 
     let currentDay, day: string, month;
-    let dateArray = new Array();
-    let currentDate = new Date(firstday);
+    const dateArray = [];
+    const currentDate = new Date(firstday);
     while (currentDate <= lastday) {
         currentDay = currentDate.getDate();
 
@@ -237,30 +239,32 @@ const SchedulteTable: FC<Props> = ({ objects }) => {
             dateString: day + '.' + month,
             minWidth: 150,
             maxWidth: 250,
-            align: 'center'
+            align: 'center',
         });
 
         currentDate.setDate(currentDate.getDate() + 1);
-    };
+    }
 
-    let dataArray = new Array();
+    const dataArray = [];
     for (let i = 0; i < hourArray.length; i++) {
-        let row: IDashboard[][] = [];
+        const row: IDashboard[][] = [];
         for (let j = 0; j < dateArray.length; j++) {
-            let currentDate = dateArray[j].date;
+            const currentDate = dateArray[j].date;
 
-            row.push(objects.filter((element) => {
-                const elementDate = new Date(moment(element.date).format());
-                const elementDay = elementDate.getDate();
-                const elementTime = elementDate.getHours();
-                const itemTime = hourArray[i].getHours();
+            row.push(
+                objects.filter((element) => {
+                    const elementDate = new Date(moment(element.date).format());
+                    const elementDay = elementDate.getDate();
+                    const elementTime = elementDate.getHours();
+                    const itemTime = hourArray[i].getHours();
 
-                return elementTime === itemTime && currentDate === elementDay;
-            }));
-        };
+                    return elementTime === itemTime && currentDate === elementDay;
+                }),
+            );
+        }
 
         dataArray.push(row);
-    };
+    }
 
     console.log("OnDate_2", currentDay);
     return (
@@ -270,36 +274,37 @@ const SchedulteTable: FC<Props> = ({ objects }) => {
                     variant="contained"
                     color="default"
                     className={clsx(classes.skipPreviousIcon, classes.skipIcon)}
-                    onClick={handleSkipPreviousClick}>
+                    onClick={handleSkipPreviousClick}
+                >
                     <SkipPreviousIcon fontSize="large" />
-                Week - 1
-            </Button>
+                    Week - 1
+                </Button>
 
                 <Button
                     variant="contained"
                     color="default"
                     className={clsx(classes.addIcon, classes.skipIcon)}
-                    onClick={handelNewCard}>
+                    onClick={handelNewCard}
+                >
                     <NoteAddOutlinedIcon fontSize="large" />
-                Добавить карточку
-            </Button>
+                    Добавить карточку
+                </Button>
 
                 <Button
                     variant="contained"
                     color="default"
                     className={clsx(classes.skipNextIcon, classes.skipIcon)}
-                    onClick={handleSkipNextClick}>
+                    onClick={handleSkipNextClick}
+                >
                     Week + 1
-                <SkipNextIcon fontSize="large" />
-
+                    <SkipNextIcon fontSize="large" />
                 </Button>
             </div>
             <TableContainer className={classes.tableContainer} component={Paper}>
                 <Table className={classes.table} stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell className={classes.sticky} scope="row">
-                            </TableCell>
+                            <TableCell className={classes.sticky} scope="row"></TableCell>
                             {dateArray.map((column, i) => (
                                 <TableCell
                                     key={i}
@@ -315,34 +320,54 @@ const SchedulteTable: FC<Props> = ({ objects }) => {
                     </TableHead>
                     <TableBody>
                         {dataArray.map((row, i) => {
-                            const value = ("0" + hourArray[i].getHours()).slice(-2) + ":" + ("0" + hourArray[i].getMinutes()).slice(-2);
+                            const value =
+                                ("0" + hourArray[i].getHours()).slice(-2) +
+                                ":" +
+                                ("0" + hourArray[i].getMinutes()).slice(-2);
                             return (
-                                <TableRow>
-                                    <TableCell className={clsx(classes.sticky, classes.timeCell)} scope="row" component="th">
+                                <TableRow key={i}>
+                                    <TableCell
+                                        className={clsx(classes.sticky, classes.timeCell)}
+                                        scope="row"
+                                        component="th"
+                                    >
                                         {value}
                                     </TableCell>
                                     {row.map((column: IDashboard[]) => {
-                                        let date: Date, time = "", room = "", subject = "", teacher = "";
+                                        let date: Date,
+                                            time = "",
+                                            room = "",
+                                            subject = "",
+                                            teacher = "";
 
                                         if (!(column.length > 0)) {
-                                            return (<TableCell />);
+                                            return <TableCell />;
                                         }
 
                                         return (
                                             <TableCell>
-
                                                 {column.map((cell: IDashboard) => {
                                                     date = new Date(cell.date);
-                                                    time = ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
-                                                    room = cell.roomId ? cell.roomId.number : "";//cell.roomId.number || "test";
-                                                    subject = cell.subjectId ? cell.subjectId.name : "";//cell.subjectId.name;
-                                                    teacher = cell.teacherId ? cell.teacherId.name : "";//cell.teacherId.name;
+                                                    time =
+                                                        ("0" + date.getHours()).slice(-2) +
+                                                        ":" +
+                                                        ("0" + date.getMinutes()).slice(-2);
+                                                    room = cell.roomId ? cell.roomId.number : ""; //cell.roomId.number || "test";
+                                                    subject = cell.subjectId ? cell.subjectId.name : ""; //cell.subjectId.name;
+                                                    teacher = cell.teacherId ? cell.teacherId.name : ""; //cell.teacherId.name;
 
                                                     return (
                                                         <Container
+                                                            key={cell._id}
                                                             className={classes.container}
-                                                            onClick={() => handleCardClick(cell)}>
-                                                            <div className={classes.cardLine} style={{ fontWeight: 'bold' }}>Класс №{room}</div>
+                                                            onClick={() => handleCardClick(cell)}
+                                                        >
+                                                            <div
+                                                                className={classes.cardLine}
+                                                                style={{ fontWeight: "bold" }}
+                                                            >
+                                                                Класс №{room}
+                                                            </div>
                                                             <div className={classes.cardLine}>{time}</div>
                                                             <div className={classes.cardLine}>{subject}</div>
                                                             <div className={classes.cardLine}>{teacher}</div>

@@ -3,15 +3,12 @@ import Page from './Page';
 import RoomsContainer from '../containers/Rooms';
 
 const Rooms = () => {
-
     const pageTitle = () => {
         return "Классы";
     };
 
     const pageMeta = () => {
-        return [
-            { name: 'description', content: 'Rooms' },
-        ];
+        return [{ name: "description", content: "Rooms" }];
     };
 
     const pageLink = () => {
@@ -29,7 +26,6 @@ const Rooms = () => {
             <RoomsContainer />
         </Page>
     );
-
 };
 
 export default Rooms;

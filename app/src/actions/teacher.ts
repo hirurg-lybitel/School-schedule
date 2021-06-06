@@ -6,7 +6,7 @@ import { teacherService } from '../services';
 interface IError {
     text: string;
     error?: any;
-};
+}
 
 export function getTeachersRequest() {
     return {
@@ -17,7 +17,7 @@ export function getTeachersRequest() {
 export function editTeacherRequest(data: ITeacher) {
     return {
         type: types.EDIT_TEACHER_REQUEST,
-        data: data
+        data: data,
     };
 }
 
@@ -37,51 +37,51 @@ export function getTeachersFailure(data: IError) {
 
 function addTeacherDuplicate() {
     return {
-        type: types.ADD_TEACHER_DUPLICATE
+        type: types.ADD_TEACHER_DUPLICATE,
     };
-};
+}
 
 function addTeacherRequest(data: ITeacher) {
     return {
         type: types.ADD_TEACHER_REQUEST,
-        data: data
+        data: data,
     };
-};
+}
 
 function editTeacherSuccess(data: ITeacher) {
     return {
         type: types.EDIT_TEACHER_SUCCESS,
-        data: data
+        data: data,
     };
-};
+}
 
 function addTeacherSuccess(data: ITeacher) {
     return {
         type: types.ADD_TEACHER_SUCCESS,
-        data: data
+        data: data,
     };
-};
+}
 
 function addTeacherFailure(data: IError) {
     return {
         type: types.ADD_TEACHER_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function editTeacherFailure(data: IError) {
     return {
         type: types.ADD_TEACHER_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function deleteTeacherFailure(data: IError) {
     return {
         type: types.DELETE_TEACHER_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function destroy(id: string | undefined) {
     return { type: types.DELETE_TEACHER_REQUEST, id };
@@ -90,28 +90,32 @@ function destroy(id: string | undefined) {
 export function typing(teacher: ITeacher) {
     return {
         type: types.TEACHER_TYPING,
-        newTeacher: teacher
+        newTeacher: teacher,
     };
 }
-
 
 export function getTeachers() {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
         dispatch(getTeachersRequest());
 
-        return teacherService().getTeachers()
+        return teacherService()
+            .getTeachers()
             .then((result) => {
                 if (result.status === 200) return dispatch(getTeachersSuccess(result.body));
-                return dispatch(getTeachersFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    getTeachersFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
                 //return Promise.resolve();
             })
             .catch((error) => {
-                dispatch(getTeachersFailure({
-                    text: "Add teacher error",
-                    error: error
-                }));
+                dispatch(
+                    getTeachersFailure({
+                        text: "Add teacher error",
+                        error: error,
+                    }),
+                );
                 //return Promise.reject(error);
             });
     };
@@ -119,7 +123,6 @@ export function getTeachers() {
 
 export function addTeacher(newTeacher: ITeacher) {
     return (dispatch: ThunkDispatch<{}, {}, any>, getState: () => { teacher: { teachers: ITeacher[] } }) => {
-
         console.log("action_addTeacher", newTeacher);
 
         const name = newTeacher.name;
@@ -130,29 +133,38 @@ export function addTeacher(newTeacher: ITeacher) {
         const data = newTeacher;
 
         /** Если такой объект уже есть в базе, то вернём соответствующее сообщение */
-        if (teacher.teachers.filter((item: ITeacher) => { return item.name === name }).length > 0) {
+        if (
+            teacher.teachers.filter((item: ITeacher) => {
+                return item.name === name;
+            }).length > 0
+        ) {
             return dispatch(addTeacherDuplicate());
-        };
+        }
 
         dispatch(addTeacherRequest(data));
 
-        return teacherService().addTeacher(data)
+        return teacherService()
+            .addTeacher(data)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(addTeacherSuccess(result.body));
                 }
-                return dispatch(addTeacherFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    addTeacherFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
             .catch((err) => {
-                return dispatch(addTeacherFailure({
-                    text: "Add teacher error",
-                    error: err
-                }));
+                return dispatch(
+                    addTeacherFailure({
+                        text: "Add teacher error",
+                        error: err,
+                    }),
+                );
             });
     };
-};
+}
 
 export function editTeacher(editTeacher: ITeacher) {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
@@ -162,40 +174,52 @@ export function editTeacher(editTeacher: ITeacher) {
 
         dispatch(editTeacherRequest(editTeacher));
 
-        return teacherService().editTeacher(editTeacher)
+        return teacherService()
+            .editTeacher(editTeacher)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(editTeacherSuccess(result.body));
                 }
-                return dispatch(editTeacherFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    editTeacherFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
             .catch((err) => {
-                return dispatch(editTeacherFailure({
-                    text: "Add teacher error",
-                    error: err
-                }));
+                return dispatch(
+                    editTeacherFailure({
+                        text: "Add teacher error",
+                        error: err,
+                    }),
+                );
             });
     };
-};
+}
 
 export function deleteTeacher(delTeacher: ITeacher) {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
         const id = delTeacher._id;
 
-        return teacherService().deleteTeacher(delTeacher)
+        return teacherService()
+            .deleteTeacher(delTeacher)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(destroy(id));
                 }
-                return dispatch(deleteTeacherFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    deleteTeacherFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
-            .catch((err) => dispatch(deleteTeacherFailure({
-                text: "Add teacher error",
-                error: err
-            })));
+            .catch((err) =>
+                dispatch(
+                    deleteTeacherFailure({
+                        text: "Add teacher error",
+                        error: err,
+                    }),
+                ),
+            );
     };
-};
+}

@@ -26,25 +26,26 @@ const useStyles = makeStyles((theme) => ({
 interface Props {
     handleSaveClick: () => void;
     handleCancelClick: () => void;
-    onEntryChange: (value: ISubject | ITeacher | IRoom) => void,
+    onEntryChange: (value: ISubject | ITeacher | IRoom) => void;
     object: any;
     inputError: boolean;
     inputErrorText: string;
 }
 
 const AddItem: FC<Props> = ({
-    object, handleCancelClick, handleSaveClick, onEntryChange,
-    inputError, inputErrorText }) => {
-
+    object,
+    handleCancelClick,
+    handleSaveClick,
+    onEntryChange,
+    inputError,
+    inputErrorText,
+}) => {
     const classes = useStyles();
     //const defaultValue = object.hasOwnProperty('name') ? object.name : object.number;
 
     let defaultValue;
-    if (object.hasOwnProperty('name'))
-        defaultValue = object.name;
-    else
-        defaultValue = object.number;
-
+    if (object.hasOwnProperty('name')) defaultValue = object.name;
+    else defaultValue = object.number;
 
     function instanceOfRooms(object: any): object is any {
         return 'number' in object;
@@ -56,12 +57,9 @@ const AddItem: FC<Props> = ({
         else
         console.log("test2", object);*/
         console.log("onChange", object);
-        if (object.hasOwnProperty('name'))
-            onEntryChange({ ...object, name: event.currentTarget.value });
-        else
-            onEntryChange({ ...object, number: event.currentTarget.value });
+        if (object.hasOwnProperty('name')) onEntryChange({ ...object, name: event.currentTarget.value });
+        else onEntryChange({ ...object, number: event.currentTarget.value });
     }, []);
-
 
     return (
         <div className={classes.root}>
@@ -78,7 +76,8 @@ const AddItem: FC<Props> = ({
                     onChange={onChange}
                     fullWidth
                     margin="normal"
-                    variant="outlined" />
+                    variant="outlined"
+                />
             </div>
             <div className={classes.container}>
                 <Button
@@ -90,7 +89,7 @@ const AddItem: FC<Props> = ({
                     onClick={handleSaveClick}
                 >
                     Сохранить
-                    </Button >
+                </Button>
                 <Button
                     className={classes.button}
                     variant="contained"
@@ -99,7 +98,7 @@ const AddItem: FC<Props> = ({
                     onClick={handleCancelClick}
                 >
                     Отменить
-                    </Button >
+                </Button>
             </div>
         </div>
     );

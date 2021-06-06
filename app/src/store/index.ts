@@ -12,9 +12,6 @@ export default function configureStore(initialState: any, history: History) {
     let store: Store;
 
     middleware.push(createLogger());
-    store = createStore(
-        createRootReducer(history),
-        initialState, composeWithDevTools(applyMiddleware(...middleware),
-    ));
+    store = createStore(createRootReducer(history), initialState, composeWithDevTools(applyMiddleware(...middleware)));
     return store;
 }

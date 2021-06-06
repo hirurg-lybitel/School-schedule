@@ -1,8 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    Button, Dialog, makeStyles, Typography, IconButton, TextField, Divider,
-} from "@material-ui/core";
+import { Button, Dialog, makeStyles, Typography, IconButton, TextField, Divider } from "@material-ui/core";
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
@@ -19,58 +17,56 @@ import { IDashboard } from '../reducers/dashboard';
 
 import { typing } from '../actions/dashboard';
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
-    root: {
-        minWidth: '400px',
-        width: '25vw',
-        margin: 0,
-        padding: theme.spacing(2),
-    },
-    closeButton: {
-        position: 'absolute',
-        right: theme.spacing(1),
-        top: theme.spacing(1),
-        color: theme.palette.grey[500],
-    },
-    dateTime: {
-        paddingBottom: theme.spacing(2),
-    },
-    combobox: {
-        paddingBottom: theme.spacing(2),
-    },
-    textDate: {
-        marginLeft: theme.spacing(1),
-        width: 150,
-    },
-    textTime: {
-        position: "absolute",
-        right: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 150,
-    },
-    deleteIcon: {
-        //position: "absolute",
-        //left: theme.spacing(1),
-    },
-    divider: {
-        marginRight: theme.spacing(2),
-    }
-}),
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            minWidth: '400px',
+            width: '25vw',
+            margin: 0,
+            padding: theme.spacing(2),
+        },
+        closeButton: {
+            position: 'absolute',
+            right: theme.spacing(1),
+            top: theme.spacing(1),
+            color: theme.palette.grey[500],
+        },
+        dateTime: {
+            paddingBottom: theme.spacing(2),
+        },
+        combobox: {
+            paddingBottom: theme.spacing(2),
+        },
+        textDate: {
+            marginLeft: theme.spacing(1),
+            width: 150,
+        },
+        textTime: {
+            position: "absolute",
+            right: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            width: 150,
+        },
+        deleteIcon: {
+            //position: "absolute",
+            //left: theme.spacing(1),
+        },
+        divider: {
+            marginRight: theme.spacing(2),
+        },
+    }),
 );
-
 
 export interface DialogTitleProps {
     children: React.ReactNode;
     onClose: () => void;
 }
 
-const DialogTitle = ((props: DialogTitleProps) => {
+const DialogTitle = (props: DialogTitleProps) => {
     const { children, onClose } = props;
     const classes = useStyles();
     return (
-        <MuiDialogTitle
-            disableTypography
-            className={classes.root}>
+        <MuiDialogTitle disableTypography className={classes.root}>
             <Typography variant="h6">{children}</Typography>
             {onClose ? (
                 <IconButton className={classes.closeButton} onClick={onClose}>
@@ -79,7 +75,7 @@ const DialogTitle = ((props: DialogTitleProps) => {
             ) : null}
         </MuiDialogTitle>
     );
-});
+};
 
 const DialogContent = withStyles((theme: Theme) => ({
     root: {
@@ -94,8 +90,6 @@ const DialogActions = withStyles((theme: Theme) => ({
     },
 }))(MuiDialogActions);
 
-
-
 export interface CustomizedDialogProps {
     objects?: Array<any>;
     edit: boolean;
@@ -107,7 +101,7 @@ export interface CustomizedDialogProps {
 export default function CustomizedDialog(props: CustomizedDialogProps) {
     const { edit } = props;
 
-    if (!edit) return (<div></div>);
+    if (!edit) return <div></div>;
 
     const { handleCloseClick, handleDeleteClick, handleSaveClick } = props;
 
@@ -183,8 +177,8 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
         dispatchTyping(newObject);
     };
 
-
-    let dateValue = "", timeValue = "";
+    let dateValue = "",
+        timeValue = "";
     const checkDate: Date | undefined = newDashboard.date;
     if (checkDate !== undefined) {
         const date = new Date(newDashboard.date);
@@ -211,12 +205,9 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
 
     return (
         <div>
-            <Dialog
-                open={edit}>
-                <DialogTitle onClose={handleCloseClick}>
-                    Редактирование карточки
-                </DialogTitle>
-                <DialogContent dividers >
+            <Dialog open={edit}>
+                <DialogTitle onClose={handleCloseClick}>Редактирование карточки</DialogTitle>
+                <DialogContent dividers>
                     <Autocomplete
                         className={classes.combobox}
                         options={rooms}
@@ -225,11 +216,9 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
                             return option.number ? option.number : "";
                         }}
                         getOptionSelected={(option: IRoom) => {
-                            return option._id === (newDashboard.roomId ? newDashboard.roomId._id : option._id)
+                            return option._id === (newDashboard.roomId ? newDashboard.roomId._id : option._id);
                         }}
-                        renderInput={(params) => (
-                            <TextField {...params} label="Учебный класс" variant="outlined" />
-                        )}
+                        renderInput={(params) => <TextField {...params} label="Учебный класс" variant="outlined" />}
                         onChange={handleRoomChange}
                     />
                     <div className={classes.dateTime}>
@@ -258,7 +247,6 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
                             }}
                             onChange={handleTimeChange}
                         />
-
                     </div>
 
                     <Autocomplete
@@ -270,11 +258,9 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
                             return option.name ? option.name : "";
                         }}
                         getOptionSelected={(option: ITeacher) => {
-                            return option._id === (newDashboard.teacherId ? newDashboard.teacherId._id : option._id)
+                            return option._id === (newDashboard.teacherId ? newDashboard.teacherId._id : option._id);
                         }}
-                        renderInput={(params) => (
-                            <TextField {...params} label="Учитель" variant="outlined" />
-                        )}
+                        renderInput={(params) => <TextField {...params} label="Учитель" variant="outlined" />}
                         onChange={handleTeacherChange}
                     />
                     <Autocomplete
@@ -286,30 +272,22 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
                             return option.name ? option.name : "";
                         }}
                         getOptionSelected={(option: ISubject) => {
-                            return option._id === (newDashboard.subjectId ? newDashboard.subjectId._id : option._id)
+                            return option._id === (newDashboard.subjectId ? newDashboard.subjectId._id : option._id);
                         }}
-                        renderInput={(params) => (
-                            <TextField {...params} label="Предмет" variant="outlined" />
-                        )}
+                        renderInput={(params) => <TextField {...params} label="Предмет" variant="outlined" />}
                         onChange={handleSubjectChange}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <IconButton
-                        onClick={handleDeleteClick}>
+                    <IconButton onClick={handleDeleteClick}>
                         <DeleteIcon />
                     </IconButton>
                     <Divider className={classes.divider} orientation="vertical" flexItem />
-                    <Button
-                        variant="contained"
-                        onClick={handleSaveClick}
-                        color="primary"
-                        size="small">
+                    <Button variant="contained" onClick={handleSaveClick} color="primary" size="small">
                         Сохранить
                     </Button>
                 </DialogActions>
             </Dialog>
-        </div >
+        </div>
     );
-
-};
+}

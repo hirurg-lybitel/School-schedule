@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    typing,
-    getTeachers,
-    addTeacher,
-    editTeacher,
-    deleteTeacher
-} from '../actions/teacher';
+import { typing, getTeachers, addTeacher, editTeacher, deleteTeacher } from '../actions/teacher';
 import { RootState } from '../reducers';
 
 import WorkArea from '../components/WorkArea';
 import { ITeacher } from 'src/reducers/teachers';
 
 import { useHistory } from 'react-router-dom';
-
 
 const Teachers = () => {
     const [edit, setEdit] = React.useState(false);
@@ -28,7 +21,6 @@ const Teachers = () => {
     const dispatchEditTeacher = (data: ITeacher) => dispatch(editTeacher(data));
     const dispatchDeleteTeacher = (data: ITeacher) => dispatch(deleteTeacher(data));
     const dispatchGetTeachers = () => dispatch(getTeachers());
-
 
     const handleAddClick = () => {
         dispatchTyping({ name: "" } as ITeacher);
@@ -61,7 +53,7 @@ const Teachers = () => {
 
             default:
                 break;
-        };
+        }
 
         setEdit(false);
     };
@@ -74,7 +66,6 @@ const Teachers = () => {
 
     useEffect(() => {
         console.log("Teachers_render");
-
     });
 
     const handleDeleteClick = (object: ITeacher) => {

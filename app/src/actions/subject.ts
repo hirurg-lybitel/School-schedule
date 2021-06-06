@@ -6,8 +6,7 @@ import { subjectService } from '../services';
 interface IError {
     text: string;
     error?: any;
-};
-
+}
 
 export function getSubjectsRequest() {
     return {
@@ -18,7 +17,7 @@ export function getSubjectsRequest() {
 export function editSubjectRequest(data: ISubject) {
     return {
         type: types.EDIT_SUBJECT_REQUEST,
-        data: data
+        data: data,
     };
 }
 
@@ -38,51 +37,51 @@ export function getSubjectsFailure(data: IError) {
 
 function addSubjectDuplicate() {
     return {
-        type: types.ADD_SUBJECT_DUPLICATE
+        type: types.ADD_SUBJECT_DUPLICATE,
     };
-};
+}
 
 function addSubjectRequest(data: ISubject) {
     return {
         type: types.ADD_SUBJECT_REQUEST,
-        data: data
+        data: data,
     };
-};
+}
 
 function editSubjectSuccess(data: ISubject) {
     return {
         type: types.EDIT_SUBJECT_SUCCESS,
-        data: data
+        data: data,
     };
-};
+}
 
 function addSubjectSuccess(data: ISubject) {
     return {
         type: types.ADD_SUBJECT_SUCCESS,
-        data: data
+        data: data,
     };
-};
+}
 
 function addSubjectFailure(data: IError) {
     return {
         type: types.ADD_SUBJECT_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function editSubjectFailure(data: IError) {
     return {
         type: types.ADD_SUBJECT_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function deleteSubjectFailure(data: IError) {
     return {
         type: types.DELETE_SUBJECT_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function destroy(id: string | undefined) {
     return { type: types.DELETE_SUBJECT_REQUEST, id };
@@ -91,28 +90,32 @@ function destroy(id: string | undefined) {
 export function typing(subject: ISubject) {
     return {
         type: types.SUBJECT_TYPING,
-        newSubject: subject
+        newSubject: subject,
     };
 }
-
 
 export function getSubjects() {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
         dispatch(getSubjectsRequest());
 
-        return subjectService().getSubjects()
+        return subjectService()
+            .getSubjects()
             .then((result) => {
                 if (result.status === 200) return dispatch(getSubjectsSuccess(result.body));
-                return dispatch(getSubjectsFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    getSubjectsFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
                 //return Promise.resolve();
             })
             .catch((error) => {
-                dispatch(getSubjectsFailure({
-                    text: "Add subject error",
-                    error: error
-                }));
+                dispatch(
+                    getSubjectsFailure({
+                        text: "Add subject error",
+                        error: error,
+                    }),
+                );
                 //return Promise.reject(error);
             });
     };
@@ -128,29 +131,38 @@ export function addSubject(newSubject: ISubject) {
         const data = newSubject;
 
         /** Если такой объект уже есть в базе, то вернём соответствующее сообщение */
-        if (subject.subjects.filter((item: ISubject) => { return item.name === name }).length > 0) {
+        if (
+            subject.subjects.filter((item: ISubject) => {
+                return item.name === name;
+            }).length > 0
+        ) {
             return dispatch(addSubjectDuplicate());
-        };
+        }
 
         dispatch(addSubjectRequest(data));
 
-        return subjectService().addSubject(data)
+        return subjectService()
+            .addSubject(data)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(addSubjectSuccess(result.body));
                 }
-                return dispatch(addSubjectFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    addSubjectFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
             .catch((err) => {
-                return dispatch(addSubjectFailure({
-                    text: "Add subject error",
-                    error: err
-                }));
+                return dispatch(
+                    addSubjectFailure({
+                        text: "Add subject error",
+                        error: err,
+                    }),
+                );
             });
     };
-};
+}
 
 export function editSubject(editSubject: ISubject) {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
@@ -160,40 +172,52 @@ export function editSubject(editSubject: ISubject) {
 
         dispatch(editSubjectRequest(editSubject));
 
-        return subjectService().editSubject(editSubject)
+        return subjectService()
+            .editSubject(editSubject)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(editSubjectSuccess(result.body));
                 }
-                return dispatch(editSubjectFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    editSubjectFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
             .catch((err) => {
-                return dispatch(editSubjectFailure({
-                    text: "Add subject error",
-                    error: err
-                }));
+                return dispatch(
+                    editSubjectFailure({
+                        text: "Add subject error",
+                        error: err,
+                    }),
+                );
             });
     };
-};
+}
 
 export function deleteSubject(delSubject: ISubject) {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
         const id = delSubject._id;
 
-        return subjectService().deleteSubject(delSubject)
+        return subjectService()
+            .deleteSubject(delSubject)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(destroy(id));
                 }
-                return dispatch(deleteSubjectFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    deleteSubjectFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
-            .catch((err) => dispatch(deleteSubjectFailure({
-                text: "Add subject error",
-                error: err
-            })));
+            .catch((err) =>
+                dispatch(
+                    deleteSubjectFailure({
+                        text: "Add subject error",
+                        error: err,
+                    }),
+                ),
+            );
     };
-};
+}

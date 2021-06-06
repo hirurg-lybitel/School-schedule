@@ -12,10 +12,9 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         height: '80vh',
-        maxWidth: '100%'
+        maxWidth: '100%',
     },
 }));
-
 
 const Dashboard = () => {
     const { dashboards } = useSelector<RootState, RootState["dashboard"]>((state) => state.dashboard);
@@ -24,10 +23,9 @@ const Dashboard = () => {
 
     return (
         <Container className={classes.container}>
-            <SchedulteTable
-                objects={dashboards} />
+            <SchedulteTable objects={dashboards} />
         </Container>
     );
-}
+};
 
 export default Dashboard;

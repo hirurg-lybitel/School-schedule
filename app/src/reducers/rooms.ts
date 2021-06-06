@@ -2,9 +2,9 @@ import { AnyAction, combineReducers } from 'redux';
 import * as types from "../types";
 
 export interface IRoom {
-    id?: string
-    _id?: string
-    number: string
+    id?: string;
+    _id?: string;
+    number: string;
 }
 
 const room = (state: IRoom, action: AnyAction) => {
@@ -27,7 +27,7 @@ const rooms = (state: IRoom[] = [], action: AnyAction) => {
             return [...state, room(action.data, action)];
 
         case types.EDIT_ROOM_SUCCESS:
-            return state.map((item) => item._id === action.data._id ? action.data : item);
+            return state.map((item) => (item._id === action.data._id ? action.data : item));
 
         case types.DELETE_ROOM_REQUEST:
             return state.filter((item) => item._id !== action.id);
@@ -36,10 +36,7 @@ const rooms = (state: IRoom[] = [], action: AnyAction) => {
     }
 };
 
-const newRoom = (
-    state = '',
-    action: AnyAction
-) => {
+const newRoom = (state = "", action: AnyAction) => {
     switch (action.type) {
         case types.ROOM_TYPING:
             return action.newRoom;
@@ -50,11 +47,9 @@ const newRoom = (
     }
 };
 
-
 const roomReducer = combineReducers({
     rooms,
-    newRoom
+    newRoom,
 });
-
 
 export default roomReducer;

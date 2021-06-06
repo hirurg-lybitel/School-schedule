@@ -5,7 +5,7 @@ export default () => {
     return {
         getTeachers: () => apiService().getResource('/teachers'),
         addTeacher: (data: ITeacher) => {
-            return apiService().postResource(`/teachers`, data)
+            return apiService().postResource('/teachers', data);
         },
         editTeacher: (data: ITeacher) => {
             const id = data._id;
@@ -13,7 +13,7 @@ export default () => {
         },
         deleteTeacher: (data: ITeacher) => {
             const id = data._id;
-            return apiService().deleteResourse(`/teachers?id=${id}`)
-        }
+            return apiService().deleteResourse(`/teachers?id=${id}`);
+        },
     };
 };

@@ -34,7 +34,7 @@ const dashboards = (state: IDashboard[] = [], action: AnyAction) => {
             return [...state, dashboard(action.data, action)];
 
         case types.EDIT_DASHBOARD_SUCCESS:
-            return state.map((item) => item._id === action.data._id ? action.data : item);
+            return state.map((item) => (item._id === action.data._id ? action.data : item));
 
         case types.DELETE_DASHBOARD_SUCCESS:
             return state.filter((item) => item._id !== action.id);
@@ -43,10 +43,7 @@ const dashboards = (state: IDashboard[] = [], action: AnyAction) => {
     }
 };
 
-const newDashboard = (
-    state = '',
-    action: AnyAction
-) => {
+const newDashboard = (state = "", action: AnyAction) => {
     switch (action.type) {
         case types.DASHBOARD_TYPING:
             return action.newDashboard;
@@ -59,7 +56,7 @@ const newDashboard = (
 
 const dashboardReducer = combineReducers({
     dashboards,
-    newDashboard
+    newDashboard,
 });
 
 export default dashboardReducer;

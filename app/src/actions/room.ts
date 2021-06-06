@@ -6,7 +6,7 @@ import { roomService } from '../services';
 interface IError {
     text: string;
     error?: any;
-};
+}
 
 export function getRoomsRequest() {
     return {
@@ -17,7 +17,7 @@ export function getRoomsRequest() {
 export function editRoomRequest(data: IRoom) {
     return {
         type: types.EDIT_ROOM_REQUEST,
-        data: data
+        data: data,
     };
 }
 
@@ -37,51 +37,51 @@ export function getRoomsFailure(data: IError) {
 
 function addRoomDuplicate() {
     return {
-        type: types.ADD_ROOM_DUPLICATE
+        type: types.ADD_ROOM_DUPLICATE,
     };
-};
+}
 
 function addRoomRequest(data: IRoom) {
     return {
         type: types.ADD_ROOM_REQUEST,
-        data: data
+        data: data,
     };
-};
+}
 
 function editRoomSuccess(data: IRoom) {
     return {
         type: types.EDIT_ROOM_SUCCESS,
-        data: data
+        data: data,
     };
-};
+}
 
 function addRoomSuccess(data: IRoom) {
     return {
         type: types.ADD_ROOM_SUCCESS,
-        data: data
+        data: data,
     };
-};
+}
 
 function addRoomFailure(data: IError) {
     return {
         type: types.ADD_ROOM_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function editRoomFailure(data: IError) {
     return {
         type: types.ADD_ROOM_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function deleteRoomFailure(data: IError) {
     return {
         type: types.DELETE_ROOM_FAILURE,
-        error: data
+        error: data,
     };
-};
+}
 
 function destroy(id: string | undefined) {
     return { type: types.DELETE_ROOM_REQUEST, id };
@@ -90,28 +90,32 @@ function destroy(id: string | undefined) {
 export function typing(room: IRoom) {
     return {
         type: types.ROOM_TYPING,
-        newRoom: room
+        newRoom: room,
     };
 }
-
 
 export function getRooms() {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
         dispatch(getRoomsRequest());
 
-        return roomService().getRooms()
+        return roomService()
+            .getRooms()
             .then((result) => {
                 if (result.status === 200) return dispatch(getRoomsSuccess(result.body));
-                return dispatch(getRoomsFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    getRoomsFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
                 //return Promise.resolve();
             })
             .catch((error) => {
-                dispatch(getRoomsFailure({
-                    text: "Add room error",
-                    error: error
-                }));
+                dispatch(
+                    getRoomsFailure({
+                        text: "Add room error",
+                        error: error,
+                    }),
+                );
                 //return Promise.reject(error);
             });
     };
@@ -119,7 +123,6 @@ export function getRooms() {
 
 export function addRoom(newRoom: IRoom) {
     return (dispatch: ThunkDispatch<{}, {}, any>, getState: () => { room: { rooms: IRoom[] } }) => {
-
         console.log("action_addRoom", newRoom);
 
         const number = newRoom.number;
@@ -130,29 +133,38 @@ export function addRoom(newRoom: IRoom) {
         const data = newRoom;
 
         /** Если такой объект уже есть в базе, то вернём соответствующее сообщение */
-        if (room.rooms.filter((item: IRoom) => { return item.number === number }).length > 0) {
+        if (
+            room.rooms.filter((item: IRoom) => {
+                return item.number === number;
+            }).length > 0
+        ) {
             return dispatch(addRoomDuplicate());
-        };
+        }
 
         dispatch(addRoomRequest(data));
 
-        return roomService().addRoom(data)
+        return roomService()
+            .addRoom(data)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(addRoomSuccess(result.body));
                 }
-                return dispatch(addRoomFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    addRoomFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
             .catch((err) => {
-                return dispatch(addRoomFailure({
-                    text: "Add room error",
-                    error: err
-                }));
+                return dispatch(
+                    addRoomFailure({
+                        text: "Add room error",
+                        error: err,
+                    }),
+                );
             });
     };
-};
+}
 
 export function editRoom(editRoom: IRoom) {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
@@ -162,40 +174,52 @@ export function editRoom(editRoom: IRoom) {
 
         dispatch(editRoomRequest(editRoom));
 
-        return roomService().editRoom(editRoom)
+        return roomService()
+            .editRoom(editRoom)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(editRoomSuccess(result.body));
                 }
-                return dispatch(editRoomFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    editRoomFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
             .catch((err) => {
-                return dispatch(editRoomFailure({
-                    text: "Add room error",
-                    error: err
-                }));
+                return dispatch(
+                    editRoomFailure({
+                        text: "Add room error",
+                        error: err,
+                    }),
+                );
             });
     };
-};
+}
 
 export function deleteRoom(delRoom: IRoom) {
     return (dispatch: ThunkDispatch<{}, {}, any>) => {
         const id = delRoom._id;
 
-        return roomService().deleteRoom(delRoom)
+        return roomService()
+            .deleteRoom(delRoom)
             .then((result) => {
                 if (result.status === 200) {
                     return dispatch(destroy(id));
                 }
-                return dispatch(deleteRoomFailure({
-                    text: "Status from server " + result.status
-                }));
+                return dispatch(
+                    deleteRoomFailure({
+                        text: "Status from server " + result.status,
+                    }),
+                );
             })
-            .catch((err) => dispatch(deleteRoomFailure({
-                text: "Add room error",
-                error: err
-            })));
+            .catch((err) =>
+                dispatch(
+                    deleteRoomFailure({
+                        text: "Add room error",
+                        error: err,
+                    }),
+                ),
+            );
     };
-};
+}
