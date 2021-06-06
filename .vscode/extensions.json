@@ -1,0 +1,11 @@
+{
+	"recommendations": [
+		"vscode-icons-team.vscode-icons",
+		"mongodb.mongodb-vscode",
+		"xabikos.javascriptsnippets",
+		"dbaeumer.vscode-eslint",
+		"mikestead.dotenv",
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+	],
+}
