@@ -1,6 +1,6 @@
 # Школьное расписание 
 
-![Example](https://ibb.co/M246Twt][img]https://i.ibb.co/ngvC2dY/example.png)
+![Example](https://github.com/hirurg-lybitel/School-schedule/blob/master/Example/example.png)
 
 Запуск сервера:
 ```bash
