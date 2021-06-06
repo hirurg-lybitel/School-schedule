@@ -1,5 +1,7 @@
 # Школьное расписание 
 
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
 Запуск сервера:
 ```bash
 api/npm start
