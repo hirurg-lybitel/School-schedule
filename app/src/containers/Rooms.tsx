@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    typing,
-    getRooms,
-    addRoom,
-    editRoom,
-    deleteRoom
-} from '../actions/room';
+import { typing, getRooms, addRoom, editRoom, deleteRoom } from '../actions/room';
 import { RootState } from '../reducers';
 
 import WorkArea from '../components/WorkArea';
@@ -14,11 +8,10 @@ import { IRoom } from 'src/reducers/rooms';
 
 import { useHistory } from 'react-router-dom';
 
-
 const Rooms = () => {
     const [edit, setEdit] = React.useState(false);
     const [inputError, setInputError] = React.useState(false);
-    const [inputErrorText, setInputErrorText] = React.useState("");
+    const [inputErrorText, setInputErrorText] = React.useState('');
     const [addType, setAddType] = React.useState(0);
     const { rooms, newRoom } = useSelector<RootState, RootState['room']>((state) => state.room);
 
@@ -29,9 +22,8 @@ const Rooms = () => {
     const dispatchDeleteRoom = (data: IRoom) => dispatch(deleteRoom(data));
     const dispatchGetRooms = () => dispatch(getRooms());
 
-
     const handleAddClick = () => {
-        dispatchTyping({ number: "" } as IRoom);
+        dispatchTyping({ number: '' } as IRoom);
 
         setAddType(1);
         setEdit(true);
@@ -46,7 +38,7 @@ const Rooms = () => {
 
     const handleSaveClick = () => {
         if (!newRoom.number) {
-            setInputErrorText("Обязательно для заполнения");
+            setInputErrorText('Обязательно для заполнения');
             setInputError(true);
             return;
         }
@@ -61,20 +53,19 @@ const Rooms = () => {
 
             default:
                 break;
-        };
+        }
 
         setEdit(false);
     };
 
     const handleCancelClick = () => {
-        setInputErrorText("");
+        setInputErrorText('');
         setInputError(false);
         setEdit(false);
     };
 
     useEffect(() => {
-        console.log("Rooms_render");
-
+        console.log('Rooms_render');
     });
 
     const handleDeleteClick = (object: IRoom) => {

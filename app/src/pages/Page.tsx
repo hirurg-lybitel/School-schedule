@@ -8,9 +8,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const Page: FC<Props> = ({
-    title, link, meta, children,
-}) => {
+const Page: FC<Props> = ({ title, link, meta, children }) => {
     return (
         <div>
             <Helmet title={title} link={link} meta={meta} />

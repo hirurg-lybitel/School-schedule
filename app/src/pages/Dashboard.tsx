@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react';
 import Page from './Page';
 import DashboardContainer from '../containers/Dashboard';
 
 const Dashboard = () => {
-
     const pageTitle = () => {
-        return "Расписание";
+        return 'Расписание';
     };
 
     const pageMeta = () => {
-        return [
-            { name: 'description', content: 'Dashboard' },
-        ];
+        return [{ name: 'description', content: 'Dashboard' }];
     };
 
     const pageLink = () => {
@@ -29,7 +26,6 @@ const Dashboard = () => {
             <DashboardContainer />
         </Page>
     );
-
 };
 
 export default Dashboard;

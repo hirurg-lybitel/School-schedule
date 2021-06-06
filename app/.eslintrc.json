@@ -8,8 +8,8 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint",
         "plugin:prettier/recommended",
+        "plugin:jsx-a11y/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -19,22 +19,14 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
+    "plugins": ["react", "@typescript-eslint", "react-hooks", "jsx-a11y"],
     "rules": {
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/prop-types": "off",
-        "semi": [
-            "error",
-            "always"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ]
+        "semi": ["error", "always"],
+        "quotes": ["error", "single", "avoid-escape"],
+        "@typescript-eslint/indent": "off" // conflicts with prettier        
     },
     "settings": {
         "react": {

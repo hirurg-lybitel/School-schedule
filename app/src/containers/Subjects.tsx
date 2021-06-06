@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    typing,
-    getSubjects,
-    addSubject,
-    editSubject,
-    deleteSubject
-} from '../actions/subject';
+import { typing, getSubjects, addSubject, editSubject, deleteSubject } from '../actions/subject';
 import { RootState } from '../reducers';
 
 import WorkArea from '../components/WorkArea';
@@ -14,11 +8,10 @@ import { ISubject } from 'src/reducers/subjects';
 
 import { useHistory } from 'react-router-dom';
 
-
 const Subjects = () => {
     const [edit, setEdit] = React.useState(false);
     const [inputError, setInputError] = React.useState(false);
-    const [inputErrorText, setInputErrorText] = React.useState("");
+    const [inputErrorText, setInputErrorText] = React.useState('');
     const [addType, setAddType] = React.useState(0);
     const { subjects, newSubject } = useSelector<RootState, RootState['subject']>((state) => state.subject);
 
@@ -29,13 +22,12 @@ const Subjects = () => {
     const dispatchDeleteSubject = (data: ISubject) => dispatch(deleteSubject(data));
     const dispatchGetSubjects = () => dispatch(getSubjects());
 
-
     const handleAddClick = () => {
-        dispatchTyping({ name: "" } as ISubject);
+        dispatchTyping({ name: '' } as ISubject);
 
         setAddType(1);
         setEdit(true);
-        //history.push('/additem');    
+        //history.push('/additem');
     };
 
     const handleEditClick = (subject: ISubject) => {
@@ -47,7 +39,7 @@ const Subjects = () => {
 
     const handleSaveClick = () => {
         if (!newSubject.name) {
-            setInputErrorText("Обязательно для заполнения");
+            setInputErrorText('Обязательно для заполнения');
             setInputError(true);
             return;
         }
@@ -62,20 +54,19 @@ const Subjects = () => {
 
             default:
                 break;
-        };
+        }
 
         setEdit(false);
     };
 
     const handleCancelClick = () => {
-        setInputErrorText("");
+        setInputErrorText('');
         setInputError(false);
         setEdit(false);
     };
 
     useEffect(() => {
-        console.log("Subjects_render");
-
+        console.log('Subjects_render');
     });
 
     const handleDeleteClick = (subject: ISubject) => {
@@ -83,7 +74,7 @@ const Subjects = () => {
         dispatchGetSubjects();
     };
 
-    console.log("container_Subjects");
+    console.log('container_Subjects');
 
     return (
         <WorkArea

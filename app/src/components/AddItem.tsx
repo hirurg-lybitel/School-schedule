@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
-import { Button, Paper, TextField } from "@material-ui/core";
+import { Button, Paper, TextField } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { ISubject } from '../reducers/subjects';
 import { ITeacher } from '../reducers/teachers';
 import { IRoom } from '../reducers/rooms';
@@ -11,8 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         margin: theme.spacing(2),
-        borderRadius: "6px",
-        boxShadow: "0px 1px 4px 0px grey",
+        borderRadius: '6px',
+        boxShadow: '0px 1px 4px 0px grey',
     },
     container: {
         margin: theme.spacing(2),
@@ -26,25 +26,26 @@ const useStyles = makeStyles((theme) => ({
 interface Props {
     handleSaveClick: () => void;
     handleCancelClick: () => void;
-    onEntryChange: (value: ISubject | ITeacher | IRoom) => void,
+    onEntryChange: (value: ISubject | ITeacher | IRoom) => void;
     object: any;
     inputError: boolean;
     inputErrorText: string;
 }
 
 const AddItem: FC<Props> = ({
-    object, handleCancelClick, handleSaveClick, onEntryChange,
-    inputError, inputErrorText }) => {
-
+    object,
+    handleCancelClick,
+    handleSaveClick,
+    onEntryChange,
+    inputError,
+    inputErrorText,
+}) => {
     const classes = useStyles();
     //const defaultValue = object.hasOwnProperty('name') ? object.name : object.number;
 
     let defaultValue;
-    if (object.hasOwnProperty('name'))
-        defaultValue = object.name;
-    else
-        defaultValue = object.number;
-
+    if (object.hasOwnProperty('name')) defaultValue = object.name;
+    else defaultValue = object.number;
 
     function instanceOfRooms(object: any): object is any {
         return 'number' in object;
@@ -55,13 +56,10 @@ const AddItem: FC<Props> = ({
         console.log("test1", object);
         else
         console.log("test2", object);*/
-        console.log("onChange", object);
-        if (object.hasOwnProperty('name'))
-            onEntryChange({ ...object, name: event.currentTarget.value });
-        else
-            onEntryChange({ ...object, number: event.currentTarget.value });
+        console.log('onChange', object);
+        if (object.hasOwnProperty('name')) onEntryChange({ ...object, name: event.currentTarget.value });
+        else onEntryChange({ ...object, number: event.currentTarget.value });
     }, []);
-
 
     return (
         <div className={classes.root}>
@@ -78,7 +76,8 @@ const AddItem: FC<Props> = ({
                     onChange={onChange}
                     fullWidth
                     margin="normal"
-                    variant="outlined" />
+                    variant="outlined"
+                />
             </div>
             <div className={classes.container}>
                 <Button
@@ -90,7 +89,7 @@ const AddItem: FC<Props> = ({
                     onClick={handleSaveClick}
                 >
                     Сохранить
-                    </Button >
+                </Button>
                 <Button
                     className={classes.button}
                     variant="contained"
@@ -99,7 +98,7 @@ const AddItem: FC<Props> = ({
                     onClick={handleCancelClick}
                 >
                     Отменить
-                    </Button >
+                </Button>
             </div>
         </div>
     );

@@ -1,12 +1,8 @@
 import React, { useCallback } from 'react';
-import {
-    AppBar, IconButton, Toolbar, Typography, Divider, List,
-    Drawer, CssBaseline
-} from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, Typography, Divider, List, Drawer, CssBaseline } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import MenuItems from "../components/MenuItems";
-
+import MenuItems from '../components/MenuItems';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -14,8 +10,6 @@ import { RootState } from '../reducers';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-
-
 
 const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
@@ -84,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         height: '80vh',
-        maxWidth: '100%'
+        maxWidth: '100%',
     },
     paper: {
         padding: theme.spacing(2),
@@ -97,10 +91,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 const Naviagation = () => {
     const [open, setOpen] = React.useState(false);
-    const [title, setTitle] = React.useState("Расписание");
+    const [title, setTitle] = React.useState('Расписание');
     const classes = useStyles();
 
     const handleDrawerOpen = () => {
@@ -120,10 +113,7 @@ const Naviagation = () => {
     return (
         <div>
             <CssBaseline />
-            <AppBar
-                position="absolute"
-                className={clsx(classes.appBar, open && classes.appBarShift)}
-            >
+            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -133,7 +123,7 @@ const Naviagation = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography component="h1" variant="h6" color="inherit" noWrap >
+                    <Typography component="h1" variant="h6" color="inherit" noWrap>
                         {title}
                     </Typography>
                 </Toolbar>
@@ -153,12 +143,10 @@ const Naviagation = () => {
                 </div>
                 <Divider />
                 <List>
-                    <MenuItems
-                        handleChageTitle={handleChageTitle}
-                    />
+                    <MenuItems handleChageTitle={handleChageTitle} />
                 </List>
             </Drawer>
-        </div >
+        </div>
     );
 };
 

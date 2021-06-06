@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    typing,
-    getTeachers,
-    addTeacher,
-    editTeacher,
-    deleteTeacher
-} from '../actions/teacher';
+import { typing, getTeachers, addTeacher, editTeacher, deleteTeacher } from '../actions/teacher';
 import { RootState } from '../reducers';
 
 import WorkArea from '../components/WorkArea';
@@ -14,11 +8,10 @@ import { ITeacher } from 'src/reducers/teachers';
 
 import { useHistory } from 'react-router-dom';
 
-
 const Teachers = () => {
     const [edit, setEdit] = React.useState(false);
     const [inputError, setInputError] = React.useState(false);
-    const [inputErrorText, setInputErrorText] = React.useState("");
+    const [inputErrorText, setInputErrorText] = React.useState('');
     const [addType, setAddType] = React.useState(0);
     const { teachers, newTeacher } = useSelector<RootState, RootState['teacher']>((state) => state.teacher);
 
@@ -29,9 +22,8 @@ const Teachers = () => {
     const dispatchDeleteTeacher = (data: ITeacher) => dispatch(deleteTeacher(data));
     const dispatchGetTeachers = () => dispatch(getTeachers());
 
-
     const handleAddClick = () => {
-        dispatchTyping({ name: "" } as ITeacher);
+        dispatchTyping({ name: '' } as ITeacher);
 
         setAddType(1);
         setEdit(true);
@@ -46,7 +38,7 @@ const Teachers = () => {
 
     const handleSaveClick = () => {
         if (!newTeacher.name) {
-            setInputErrorText("Обязательно для заполнения");
+            setInputErrorText('Обязательно для заполнения');
             setInputError(true);
             return;
         }
@@ -61,20 +53,19 @@ const Teachers = () => {
 
             default:
                 break;
-        };
+        }
 
         setEdit(false);
     };
 
     const handleCancelClick = () => {
-        setInputErrorText("");
+        setInputErrorText('');
         setInputError(false);
         setEdit(false);
     };
 
     useEffect(() => {
-        console.log("Teachers_render");
-
+        console.log('Teachers_render');
     });
 
     const handleDeleteClick = (object: ITeacher) => {

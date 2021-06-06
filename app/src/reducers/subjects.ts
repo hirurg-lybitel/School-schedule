@@ -1,14 +1,14 @@
 import { AnyAction, combineReducers } from 'redux';
-import * as types from "../types";
+import * as types from '../types';
 
 export interface ISubject {
-    id?: string
-    _id?: string
-    name: string
+    id?: string;
+    _id?: string;
+    name: string;
 }
 
 const subject = (state: ISubject, action: AnyAction) => {
-    console.log("reducer_subject_1", state);
+    console.log('reducer_subject_1', state);
 
     switch (action.type) {
         case types.ADD_SUBJECT_SUCCESS:
@@ -28,7 +28,7 @@ const subjects = (state: ISubject[] = [], action: AnyAction) => {
             return [...state, subject(action.data, action)];
 
         case types.EDIT_SUBJECT_SUCCESS:
-            return state.map((item) => item._id === action.data._id ? action.data : item);
+            return state.map((item) => (item._id === action.data._id ? action.data : item));
 
         case types.DELETE_SUBJECT_REQUEST:
             return state.filter((item) => item._id !== action.id);
@@ -37,10 +37,7 @@ const subjects = (state: ISubject[] = [], action: AnyAction) => {
     }
 };
 
-const newSubject = (
-    state = '',
-    action: AnyAction
-) => {
+const newSubject = (state = '', action: AnyAction) => {
     switch (action.type) {
         case types.SUBJECT_TYPING:
             return action.newSubject;
@@ -51,11 +48,9 @@ const newSubject = (
     }
 };
 
-
 const subjectReducer = combineReducers({
     subjects,
-    newSubject
+    newSubject,
 });
-
 
 export default subjectReducer;

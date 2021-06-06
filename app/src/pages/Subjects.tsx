@@ -3,15 +3,12 @@ import Page from './Page';
 import SubjectsContainer from '../containers/Subjects';
 
 const Subjects = () => {
-
     const pageTitle = () => {
-        return "Предметы";
+        return 'Предметы';
     };
 
     const pageMeta = () => {
-        return [
-            { name: 'description', content: 'Subject' },
-        ];
+        return [{ name: 'description', content: 'Subject' }];
     };
 
     const pageLink = () => {

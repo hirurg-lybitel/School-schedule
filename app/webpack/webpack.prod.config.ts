@@ -1,20 +1,23 @@
-import path from 'path';
 import webpack from 'webpack';
 import resolve from './resolve';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration as WebpackConfiguration } from 'webpack';
-import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 
-interface Configuration extends WebpackConfiguration {
-    devServer?: WebpackDevServerConfiguration;
-}
-
-const config: Configuration = {
-    mode: 'development',
+const config: WebpackConfiguration = {
+    mode: 'production',
+    entry: './src/index.tsx',
     output: {
+        path: '/dist',
+        filename: 'js/bundle.[contenthash].min.js',
         publicPath: '/',
     },
-    entry: './src/index.tsx',
+    devtool: 'source-map',
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'public/index.html',
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+    ],
     module: {
         rules: [
             {
@@ -30,21 +33,10 @@ const config: Configuration = {
         ],
     },
     resolve,
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: 'public/index.html',
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-    ],
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './',
-        historyApiFallback: true,
-        port: 3000,
-        open: true,
-        hot: true,
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
     },
-    target: 'web',
 };
 
 export default config;
