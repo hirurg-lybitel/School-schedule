@@ -1,5 +1,5 @@
 import { AnyAction, combineReducers } from 'redux';
-import * as types from "../types";
+import * as types from '../types';
 
 export interface IRoom {
     id?: string;
@@ -17,7 +17,7 @@ const room = (state: IRoom, action: AnyAction) => {
 };
 
 const rooms = (state: IRoom[] = [], action: AnyAction) => {
-    console.log("rooms_reducer", action);
+    console.log('rooms_reducer', action);
     switch (action.type) {
         case types.GET_ROOMS_SUCCESS:
             if (action.data) return action.data;
@@ -36,7 +36,7 @@ const rooms = (state: IRoom[] = [], action: AnyAction) => {
     }
 };
 
-const newRoom = (state = "", action: AnyAction) => {
+const newRoom = (state = '', action: AnyAction) => {
     switch (action.type) {
         case types.ROOM_TYPING:
             return action.newRoom;

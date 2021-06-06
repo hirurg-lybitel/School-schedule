@@ -1,6 +1,6 @@
 import { ThunkDispatch } from 'redux-thunk';
 import { ISubject } from '../reducers/subjects';
-import * as types from "../types";
+import * as types from '../types';
 import { subjectService } from '../services';
 
 interface IError {
@@ -104,7 +104,7 @@ export function getSubjects() {
                 if (result.status === 200) return dispatch(getSubjectsSuccess(result.body));
                 return dispatch(
                     getSubjectsFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
                 //return Promise.resolve();
@@ -112,7 +112,7 @@ export function getSubjects() {
             .catch((error) => {
                 dispatch(
                     getSubjectsFailure({
-                        text: "Add subject error",
+                        text: 'Add subject error',
                         error: error,
                     }),
                 );
@@ -149,14 +149,14 @@ export function addSubject(newSubject: ISubject) {
                 }
                 return dispatch(
                     addSubjectFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     addSubjectFailure({
-                        text: "Add subject error",
+                        text: 'Add subject error',
                         error: err,
                     }),
                 );
@@ -180,14 +180,14 @@ export function editSubject(editSubject: ISubject) {
                 }
                 return dispatch(
                     editSubjectFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     editSubjectFailure({
-                        text: "Add subject error",
+                        text: 'Add subject error',
                         error: err,
                     }),
                 );
@@ -207,14 +207,14 @@ export function deleteSubject(delSubject: ISubject) {
                 }
                 return dispatch(
                     deleteSubjectFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) =>
                 dispatch(
                     deleteSubjectFailure({
-                        text: "Add subject error",
+                        text: 'Add subject error',
                         error: err,
                     }),
                 ),

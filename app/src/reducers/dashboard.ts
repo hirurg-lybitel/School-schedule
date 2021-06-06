@@ -1,5 +1,5 @@
 import { AnyAction, combineReducers } from 'redux';
-import * as types from "../types";
+import * as types from '../types';
 import { ISubject } from './subjects';
 import { IRoom } from './rooms';
 import { ITeacher } from './teachers';
@@ -28,9 +28,9 @@ const dashboards = (state: IDashboard[] = [], action: AnyAction) => {
             return state;
 
         case types.ADD_DASHBOARD_SUCCESS:
-            console.log("ADD_DASHBOARD_SUCCESS", action);
-            console.log("ADD_DASHBOARD_SUCCESS_state", state);
-            console.log("ADD_DASHBOARD_SUCCESS_state_map", dashboard(action.data, action));
+            console.log('ADD_DASHBOARD_SUCCESS', action);
+            console.log('ADD_DASHBOARD_SUCCESS_state', state);
+            console.log('ADD_DASHBOARD_SUCCESS_state_map', dashboard(action.data, action));
             return [...state, dashboard(action.data, action)];
 
         case types.EDIT_DASHBOARD_SUCCESS:
@@ -43,7 +43,7 @@ const dashboards = (state: IDashboard[] = [], action: AnyAction) => {
     }
 };
 
-const newDashboard = (state = "", action: AnyAction) => {
+const newDashboard = (state = '', action: AnyAction) => {
     switch (action.type) {
         case types.DASHBOARD_TYPING:
             return action.newDashboard;

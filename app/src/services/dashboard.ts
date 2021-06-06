@@ -1,5 +1,5 @@
 import { IDashboard } from '../reducers/dashboard';
-import { apiService } from "./apiService";
+import { apiService } from './apiService';
 
 export default () => {
     return {

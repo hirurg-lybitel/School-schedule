@@ -1,6 +1,6 @@
 import { ThunkDispatch } from 'redux-thunk';
 import { ITeacher } from '../reducers/teachers';
-import * as types from "../types";
+import * as types from '../types';
 import { teacherService } from '../services';
 
 interface IError {
@@ -104,7 +104,7 @@ export function getTeachers() {
                 if (result.status === 200) return dispatch(getTeachersSuccess(result.body));
                 return dispatch(
                     getTeachersFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
                 //return Promise.resolve();
@@ -112,7 +112,7 @@ export function getTeachers() {
             .catch((error) => {
                 dispatch(
                     getTeachersFailure({
-                        text: "Add teacher error",
+                        text: 'Add teacher error',
                         error: error,
                     }),
                 );
@@ -123,7 +123,7 @@ export function getTeachers() {
 
 export function addTeacher(newTeacher: ITeacher) {
     return (dispatch: ThunkDispatch<{}, {}, any>, getState: () => { teacher: { teachers: ITeacher[] } }) => {
-        console.log("action_addTeacher", newTeacher);
+        console.log('action_addTeacher', newTeacher);
 
         const name = newTeacher.name;
 
@@ -151,14 +151,14 @@ export function addTeacher(newTeacher: ITeacher) {
                 }
                 return dispatch(
                     addTeacherFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     addTeacherFailure({
-                        text: "Add teacher error",
+                        text: 'Add teacher error',
                         error: err,
                     }),
                 );
@@ -182,14 +182,14 @@ export function editTeacher(editTeacher: ITeacher) {
                 }
                 return dispatch(
                     editTeacherFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     editTeacherFailure({
-                        text: "Add teacher error",
+                        text: 'Add teacher error',
                         error: err,
                     }),
                 );
@@ -209,14 +209,14 @@ export function deleteTeacher(delTeacher: ITeacher) {
                 }
                 return dispatch(
                     deleteTeacherFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) =>
                 dispatch(
                     deleteTeacherFailure({
-                        text: "Add teacher error",
+                        text: 'Add teacher error',
                         error: err,
                     }),
                 ),

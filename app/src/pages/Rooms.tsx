@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import Page from './Page';
 import RoomsContainer from '../containers/Rooms';
 
 const Rooms = () => {
     const pageTitle = () => {
-        return "Классы";
+        return 'Классы';
     };
 
     const pageMeta = () => {
-        return [{ name: "description", content: "Rooms" }];
+        return [{ name: 'description', content: 'Rooms' }];
     };
 
     const pageLink = () => {

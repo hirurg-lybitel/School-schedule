@@ -9,9 +9,9 @@ import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import PeopleIcon from '@material-ui/icons/People';
 import SubjectIcon from '@material-ui/icons/Subject';
 
-import { getSubjects } from "../actions/subject";
-import { getTeachers } from "../actions/teacher";
-import { getRooms } from "../actions/room";
+import { getSubjects } from '../actions/subject';
+import { getTeachers } from '../actions/teacher';
+import { getRooms } from '../actions/room';
 import { getDashboard } from '../actions/dashboard';
 
 const MenuItems = (props) => {
@@ -21,22 +21,22 @@ const MenuItems = (props) => {
     const dispatch = useDispatch();
 
     const handleDashboardClick = () => {
-        handleChageTitle("Расписание");
+        handleChageTitle('Расписание');
         dispatch(getDashboard());
         history.push('/dashboard');
     };
     const handleSubjectClick = () => {
-        handleChageTitle("Предметы");
+        handleChageTitle('Предметы');
         dispatch(getSubjects());
         history.push('/subjects');
     };
     const handleTeacherClick = () => {
-        handleChageTitle("Учителя");
+        handleChageTitle('Учителя');
         dispatch(getTeachers());
         history.push('/teachers');
     };
     const handleRoomClick = () => {
-        handleChageTitle("Учебные классы");
+        handleChageTitle('Учебные классы');
         dispatch(getRooms());
         history.push('/rooms');
     };

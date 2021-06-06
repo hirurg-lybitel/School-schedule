@@ -1,6 +1,6 @@
 import { ThunkDispatch } from 'redux-thunk';
 import { IDashboard } from '../reducers/dashboard';
-import * as types from "../types";
+import * as types from '../types';
 import { dashboardervice } from '../services';
 
 interface IError {
@@ -39,11 +39,11 @@ export function getDashboard() {
         return dashboardervice()
             .getDashboards()
             .then((result) => {
-                console.log("getDashboard", result.body);
+                console.log('getDashboard', result.body);
                 if (result.status === 200) return dispatch(getDashboardSuccess(result.body));
                 return dispatch(
                     getDashboardFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
                 //return Promise.resolve();
@@ -51,7 +51,7 @@ export function getDashboard() {
             .catch((error) => {
                 dispatch(
                     getDashboardFailure({
-                        text: "Add teacher error",
+                        text: 'Add teacher error',
                         error: error,
                     }),
                 );
@@ -92,14 +92,14 @@ export function addDashboard(newObject: IDashboard) {
                 }
                 return dispatch(
                     addDashboardFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     addDashboardFailure({
-                        text: "Add dashboard error",
+                        text: 'Add dashboard error',
                         error: err,
                     }),
                 );
@@ -135,19 +135,19 @@ export function editDashboard(newObject: IDashboard) {
             .editDashboard(data)
             .then((result) => {
                 if (result.status === 200) {
-                    console.log("editDashboard", result.body);
+                    console.log('editDashboard', result.body);
                     return dispatch(editDashboardSuccess(result.body));
                 }
                 return dispatch(
                     editDashboardFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     editDashboardFailure({
-                        text: "Edit dashboard error",
+                        text: 'Edit dashboard error',
                         error: err,
                     }),
                 );
@@ -187,14 +187,14 @@ export function deleteDashboard(delObject: IDashboard) {
                 }
                 return dispatch(
                     deleteDashboardFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) =>
                 dispatch(
                     deleteDashboardFailure({
-                        text: "Add subject error",
+                        text: 'Add subject error',
                         error: err,
                     }),
                 ),

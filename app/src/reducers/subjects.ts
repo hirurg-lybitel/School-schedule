@@ -1,5 +1,5 @@
 import { AnyAction, combineReducers } from 'redux';
-import * as types from "../types";
+import * as types from '../types';
 
 export interface ISubject {
     id?: string;
@@ -8,7 +8,7 @@ export interface ISubject {
 }
 
 const subject = (state: ISubject, action: AnyAction) => {
-    console.log("reducer_subject_1", state);
+    console.log('reducer_subject_1', state);
 
     switch (action.type) {
         case types.ADD_SUBJECT_SUCCESS:
@@ -37,7 +37,7 @@ const subjects = (state: ISubject[] = [], action: AnyAction) => {
     }
 };
 
-const newSubject = (state = "", action: AnyAction) => {
+const newSubject = (state = '', action: AnyAction) => {
     switch (action.type) {
         case types.SUBJECT_TYPING:
             return action.newSubject;

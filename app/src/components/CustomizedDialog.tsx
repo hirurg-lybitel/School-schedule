@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Dialog, makeStyles, Typography, IconButton, TextField, Divider } from "@material-ui/core";
+import { Button, Dialog, makeStyles, Typography, IconButton, TextField, Divider } from '@material-ui/core';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
             width: 150,
         },
         textTime: {
-            position: "absolute",
+            position: 'absolute',
             right: theme.spacing(1),
             marginRight: theme.spacing(1),
             width: 150,
@@ -125,11 +125,11 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
         const hours = date.getHours() || 8;
         const minutes = date.getMinutes() || 0;
 
-        console.log("year", year);
-        console.log("month", month);
-        console.log("day", day);
-        console.log("hours", hours);
-        console.log("minutes", minutes);
+        console.log('year', year);
+        console.log('month', month);
+        console.log('day', day);
+        console.log('hours', hours);
+        console.log('minutes', minutes);
 
         const newDate = new Date(year, month, day, hours, minutes);
 
@@ -144,15 +144,15 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
         const month = date.getMonth();
         const day = date.getDate();
 
-        const timeOnChange = event.target.value.split(":");
+        const timeOnChange = event.target.value.split(':');
         const hours = timeOnChange[0];
         const minutes = timeOnChange[1];
 
-        console.log("year", year);
-        console.log("month", month);
-        console.log("day", day);
-        console.log("hours", hours);
-        console.log("minutes", minutes);
+        console.log('year', year);
+        console.log('month', month);
+        console.log('day', day);
+        console.log('hours', hours);
+        console.log('minutes', minutes);
 
         const newDate = new Date(year, month, day, hours, minutes);
 
@@ -177,31 +177,31 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
         dispatchTyping(newObject);
     };
 
-    let dateValue = "",
-        timeValue = "";
+    let dateValue = '',
+        timeValue = '';
     const checkDate: Date | undefined = newDashboard.date;
     if (checkDate !== undefined) {
         const date = new Date(newDashboard.date);
 
-        const year = ("0" + date.getFullYear()).slice(-4);
-        const month = ("0" + (date.getMonth() + 1)).slice(-2);
-        const day = ("0" + date.getDate()).slice(-2);
-        dateValue = year + "-" + month + "-" + day;
+        const year = ('0' + date.getFullYear()).slice(-4);
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        dateValue = year + '-' + month + '-' + day;
 
-        const hours = ("0" + date.getHours()).slice(-2);
-        const minutes = ("0" + date.getMinutes()).slice(-2);
-        timeValue = hours + ":" + minutes;
+        const hours = ('0' + date.getHours()).slice(-2);
+        const minutes = ('0' + date.getMinutes()).slice(-2);
+        timeValue = hours + ':' + minutes;
     } else {
         const date = new Date();
-        const year = ("0" + date.getFullYear()).slice(-4);
-        const month = ("0" + (date.getMonth() + 1)).slice(-2);
-        const day = ("0" + date.getDate()).slice(-2);
-        dateValue = year + "-" + month + "-" + day;
+        const year = ('0' + date.getFullYear()).slice(-4);
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        dateValue = year + '-' + month + '-' + day;
 
-        timeValue = "08:00";
+        timeValue = '08:00';
     }
 
-    console.log("newDashboard", newDashboard);
+    console.log('newDashboard', newDashboard);
 
     return (
         <div>
@@ -213,7 +213,7 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
                         options={rooms}
                         value={newDashboard.roomId ? newDashboard.roomId : null}
                         getOptionLabel={(option: IRoom) => {
-                            return option.number ? option.number : "";
+                            return option.number ? option.number : '';
                         }}
                         getOptionSelected={(option: IRoom) => {
                             return option._id === (newDashboard.roomId ? newDashboard.roomId._id : option._id);
@@ -255,7 +255,7 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
                         //defaultValue={newDashboard.teacherId ? newDashboard.teacherId : null}
                         value={newDashboard.teacherId ? newDashboard.teacherId : null}
                         getOptionLabel={(option: ITeacher) => {
-                            return option.name ? option.name : "";
+                            return option.name ? option.name : '';
                         }}
                         getOptionSelected={(option: ITeacher) => {
                             return option._id === (newDashboard.teacherId ? newDashboard.teacherId._id : option._id);
@@ -269,7 +269,7 @@ export default function CustomizedDialog(props: CustomizedDialogProps) {
                         //defaultValue={newDashboard.subjectId}
                         value={newDashboard.subjectId ? newDashboard.subjectId : null}
                         getOptionLabel={(option: ISubject) => {
-                            return option.name ? option.name : "";
+                            return option.name ? option.name : '';
                         }}
                         getOptionSelected={(option: ISubject) => {
                             return option._id === (newDashboard.subjectId ? newDashboard.subjectId._id : option._id);

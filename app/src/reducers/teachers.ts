@@ -1,5 +1,5 @@
 import { AnyAction, combineReducers } from 'redux';
-import * as types from "../types";
+import * as types from '../types';
 
 export interface ITeacher {
     id?: string;
@@ -35,7 +35,7 @@ const teachers = (state: ITeacher[] = [], action: AnyAction) => {
     }
 };
 
-const newTeacher = (state = "", action: AnyAction) => {
+const newTeacher = (state = '', action: AnyAction) => {
     switch (action.type) {
         case types.TEACHER_TYPING:
             return action.newTeacher;

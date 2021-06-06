@@ -1,11 +1,11 @@
-import webpack from "webpack";
+import webpack from 'webpack';
 import resolve from './resolve';
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import { Configuration as WebpackConfiguration } from "webpack";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { Configuration as WebpackConfiguration } from 'webpack';
 
 const config: WebpackConfiguration = {
     mode: 'production',
-    entry: "./src/index.tsx",
+    entry: './src/index.tsx',
     output: {
         path: '/dist',
         filename: 'js/bundle.[contenthash].min.js',
@@ -14,7 +14,7 @@ const config: WebpackConfiguration = {
     devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
-            template: "public/index.html",
+            template: 'public/index.html',
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],
@@ -24,9 +24,9 @@ const config: WebpackConfiguration = {
                 test: /\.(ts|js)x?$/i,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+                        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
                     },
                 },
             },

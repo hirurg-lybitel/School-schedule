@@ -1,5 +1,5 @@
 import { IRoom } from '../reducers/rooms';
-import { apiService } from "./apiService";
+import { apiService } from './apiService';
 
 export default () => {
     return {

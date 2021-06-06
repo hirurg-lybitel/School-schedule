@@ -1,12 +1,12 @@
 import React from 'react';
 import { RouteConfig } from 'react-router-config';
 
-import App from "../containers/App";
-import Main from "../pages/Main";
-import Dashboard from "../pages/Dashboard";
-import Subjects from "../pages/Subjects";
-import Teachers from "../pages/Teachers";
-import Rooms from "../pages/Rooms";
+import App from '../containers/App';
+import Main from '../pages/Main';
+import Dashboard from '../pages/Dashboard';
+import Subjects from '../pages/Subjects';
+import Teachers from '../pages/Teachers';
+import Rooms from '../pages/Rooms';
 
 import { Store } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -17,24 +17,24 @@ const routes: RouteConfig[] = [
         component: App as React.ComponentType,
         routes: [
             {
-                path: "/",
+                path: '/',
                 exact: true,
                 component: Main,
             },
             {
-                path: "/subjects",
+                path: '/subjects',
                 component: Subjects,
             },
             {
-                path: "/rooms",
+                path: '/rooms',
                 component: Rooms,
             },
             {
-                path: "/teachers",
+                path: '/teachers',
                 component: Teachers,
             },
             {
-                path: "/dashboard",
+                path: '/dashboard',
                 component: Dashboard,
             },
         ],

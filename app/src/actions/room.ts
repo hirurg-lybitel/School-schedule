@@ -1,6 +1,6 @@
 import { ThunkDispatch } from 'redux-thunk';
 import { IRoom } from '../reducers/rooms';
-import * as types from "../types";
+import * as types from '../types';
 import { roomService } from '../services';
 
 interface IError {
@@ -104,7 +104,7 @@ export function getRooms() {
                 if (result.status === 200) return dispatch(getRoomsSuccess(result.body));
                 return dispatch(
                     getRoomsFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
                 //return Promise.resolve();
@@ -112,7 +112,7 @@ export function getRooms() {
             .catch((error) => {
                 dispatch(
                     getRoomsFailure({
-                        text: "Add room error",
+                        text: 'Add room error',
                         error: error,
                     }),
                 );
@@ -123,7 +123,7 @@ export function getRooms() {
 
 export function addRoom(newRoom: IRoom) {
     return (dispatch: ThunkDispatch<{}, {}, any>, getState: () => { room: { rooms: IRoom[] } }) => {
-        console.log("action_addRoom", newRoom);
+        console.log('action_addRoom', newRoom);
 
         const number = newRoom.number;
 
@@ -151,14 +151,14 @@ export function addRoom(newRoom: IRoom) {
                 }
                 return dispatch(
                     addRoomFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     addRoomFailure({
-                        text: "Add room error",
+                        text: 'Add room error',
                         error: err,
                     }),
                 );
@@ -182,14 +182,14 @@ export function editRoom(editRoom: IRoom) {
                 }
                 return dispatch(
                     editRoomFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) => {
                 return dispatch(
                     editRoomFailure({
-                        text: "Add room error",
+                        text: 'Add room error',
                         error: err,
                     }),
                 );
@@ -209,14 +209,14 @@ export function deleteRoom(delRoom: IRoom) {
                 }
                 return dispatch(
                     deleteRoomFailure({
-                        text: "Status from server " + result.status,
+                        text: 'Status from server ' + result.status,
                     }),
                 );
             })
             .catch((err) =>
                 dispatch(
                     deleteRoomFailure({
-                        text: "Add room error",
+                        text: 'Add room error',
                         error: err,
                     }),
                 ),

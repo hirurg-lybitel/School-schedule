@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
-import { Button, Paper, TextField } from "@material-ui/core";
+import { Button, Paper, TextField } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { ISubject } from '../reducers/subjects';
 import { ITeacher } from '../reducers/teachers';
 import { IRoom } from '../reducers/rooms';
@@ -11,8 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         margin: theme.spacing(2),
-        borderRadius: "6px",
-        boxShadow: "0px 1px 4px 0px grey",
+        borderRadius: '6px',
+        boxShadow: '0px 1px 4px 0px grey',
     },
     container: {
         margin: theme.spacing(2),
@@ -56,7 +56,7 @@ const AddItem: FC<Props> = ({
         console.log("test1", object);
         else
         console.log("test2", object);*/
-        console.log("onChange", object);
+        console.log('onChange', object);
         if (object.hasOwnProperty('name')) onEntryChange({ ...object, name: event.currentTarget.value });
         else onEntryChange({ ...object, number: event.currentTarget.value });
     }, []);

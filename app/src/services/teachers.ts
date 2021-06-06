@@ -1,5 +1,5 @@
 import { ITeacher } from '../reducers/teachers';
-import { apiService } from "./apiService";
+import { apiService } from './apiService';
 
 export default () => {
     return {

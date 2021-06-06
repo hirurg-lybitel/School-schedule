@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { AppBar, IconButton, Toolbar, Typography, Divider, List, Drawer, CssBaseline } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import MenuItems from "../components/MenuItems";
+import MenuItems from '../components/MenuItems';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Naviagation = () => {
     const [open, setOpen] = React.useState(false);
-    const [title, setTitle] = React.useState("Расписание");
+    const [title, setTitle] = React.useState('Расписание');
     const classes = useStyles();
 
     const handleDrawerOpen = () => {

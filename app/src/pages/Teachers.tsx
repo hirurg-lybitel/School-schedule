@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import Page from './Page';
 import TeachersContainer from '../containers/Teachers';
 
 const Teachers = () => {
     const pageTitle = () => {
-        return "Учителя";
+        return 'Учителя';
     };
 
     const pageMeta = () => {
-        return [{ name: "description", content: "Teachers" }];
+        return [{ name: 'description', content: 'Teachers' }];
     };
 
     const pageLink = () => {

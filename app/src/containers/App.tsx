@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Switch } from 'react-router-dom';
 import { renderRoutes, RouteConfig } from 'react-router-config';
-import Navigation from "./Navigation";
+import Navigation from './Navigation';
 
 import { makeStyles } from '@material-ui/core/styles';
 

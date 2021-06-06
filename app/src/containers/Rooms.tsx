@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 const Rooms = () => {
     const [edit, setEdit] = React.useState(false);
     const [inputError, setInputError] = React.useState(false);
-    const [inputErrorText, setInputErrorText] = React.useState("");
+    const [inputErrorText, setInputErrorText] = React.useState('');
     const [addType, setAddType] = React.useState(0);
     const { rooms, newRoom } = useSelector<RootState, RootState['room']>((state) => state.room);
 
@@ -23,7 +23,7 @@ const Rooms = () => {
     const dispatchGetRooms = () => dispatch(getRooms());
 
     const handleAddClick = () => {
-        dispatchTyping({ number: "" } as IRoom);
+        dispatchTyping({ number: '' } as IRoom);
 
         setAddType(1);
         setEdit(true);
@@ -38,7 +38,7 @@ const Rooms = () => {
 
     const handleSaveClick = () => {
         if (!newRoom.number) {
-            setInputErrorText("Обязательно для заполнения");
+            setInputErrorText('Обязательно для заполнения');
             setInputError(true);
             return;
         }
@@ -59,13 +59,13 @@ const Rooms = () => {
     };
 
     const handleCancelClick = () => {
-        setInputErrorText("");
+        setInputErrorText('');
         setInputError(false);
         setEdit(false);
     };
 
     useEffect(() => {
-        console.log("Rooms_render");
+        console.log('Rooms_render');
     });
 
     const handleDeleteClick = (object: IRoom) => {

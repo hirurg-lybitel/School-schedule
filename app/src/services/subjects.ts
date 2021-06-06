@@ -1,11 +1,11 @@
 import { ISubject } from '../reducers/subjects';
-import { apiService } from "./apiService";
+import { apiService } from './apiService';
 
 export default () => {
     return {
         getSubjects: () => apiService().getResource('/subjects'),
         addSubject: (data: ISubject) => {
-            console.log("addSubject", data);
+            console.log('addSubject', data);
             return apiService().postResource('/subjects', data);
         },
         editSubject: (data: ISubject) => {

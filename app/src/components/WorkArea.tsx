@@ -5,7 +5,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
 import Divider from '@material-ui/core/Divider';
 
-import AddItem from "./AddItem";
+import AddItem from './AddItem';
 
 import { ISubject } from '../reducers/subjects';
 import { IRoom } from '../reducers/rooms';
@@ -64,7 +64,7 @@ const WorkArea: FC<Props> = ({
     const classes = useStyles();
 
     const objectItems = objects.map((item, key) => {
-        const text = item.hasOwnProperty("name") ? item.name : item.number;
+        const text = item.hasOwnProperty('name') ? item.name : item.number;
         return (
             <div>
                 <ListItem key={key}>

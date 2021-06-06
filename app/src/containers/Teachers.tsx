@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 const Teachers = () => {
     const [edit, setEdit] = React.useState(false);
     const [inputError, setInputError] = React.useState(false);
-    const [inputErrorText, setInputErrorText] = React.useState("");
+    const [inputErrorText, setInputErrorText] = React.useState('');
     const [addType, setAddType] = React.useState(0);
     const { teachers, newTeacher } = useSelector<RootState, RootState['teacher']>((state) => state.teacher);
 
@@ -23,7 +23,7 @@ const Teachers = () => {
     const dispatchGetTeachers = () => dispatch(getTeachers());
 
     const handleAddClick = () => {
-        dispatchTyping({ name: "" } as ITeacher);
+        dispatchTyping({ name: '' } as ITeacher);
 
         setAddType(1);
         setEdit(true);
@@ -38,7 +38,7 @@ const Teachers = () => {
 
     const handleSaveClick = () => {
         if (!newTeacher.name) {
-            setInputErrorText("Обязательно для заполнения");
+            setInputErrorText('Обязательно для заполнения');
             setInputError(true);
             return;
         }
@@ -59,13 +59,13 @@ const Teachers = () => {
     };
 
     const handleCancelClick = () => {
-        setInputErrorText("");
+        setInputErrorText('');
         setInputError(false);
         setEdit(false);
     };
 
     useEffect(() => {
-        console.log("Teachers_render");
+        console.log('Teachers_render');
     });
 
     const handleDeleteClick = (object: ITeacher) => {

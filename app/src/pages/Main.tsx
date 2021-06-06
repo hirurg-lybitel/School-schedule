@@ -9,7 +9,7 @@ const About = () => {
     };
 
     const pageMeta = () => {
-        return [{ name: "description", content: "main" }];
+        return [{ name: 'description', content: 'main' }];
     };
 
     const pageLink = () => {

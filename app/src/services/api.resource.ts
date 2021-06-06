@@ -1,4 +1,4 @@
-import * as myConst from "../constansts";
+import * as myConst from '../constansts';
 
 //const ApiService = () => {
 export default () => {
@@ -16,7 +16,7 @@ export default () => {
                 throw new Error(`Could not fetch ${url}, received ${res.status}`);
             }
 
-            console.log("getResource", res);
+            console.log('getResource', res);
             const status = res.status;
             const body = await res.json();
             return { status, body };
