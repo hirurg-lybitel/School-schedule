@@ -1,6 +1,6 @@
 # Школьное расписание 
 
-![Example](https://github.com/hirurg-lybitel/School-schedule/blob/master/Example/example.png)
+![Example](https://user-images.githubusercontent.com/11502258/120930149-ce46d300-c6f4-11eb-8648-e69f1f011b70.png)
 
 # Инструкции
 Используетяс база MongoDB, расположенная на [Atlas](https://cloud.mongodb.com/v2/60b3ae2ddea3c44b104940d6#clusters).
