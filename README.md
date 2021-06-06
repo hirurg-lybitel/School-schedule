@@ -1,5 +1,7 @@
 # Школьное расписание 
 
+![Example](https://ibb.co/M246Twt)
+
 Запуск сервера:
 ```bash
 api/npm start
