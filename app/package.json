@@ -6,9 +6,9 @@
   "scripts": {
     "start": "webpack serve --config ./webpack/webpack.dev.config.ts",
     "build": "webpack --config ./webpack/webpack.prod.config.ts",
-    "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
+    "lint": "eslint --ext .js,.ts .",
     "lint:fix": "eslint --fix \"**/*.ts*\"",
-    "prettier:fix": "prettier --write \"**/*.ts*\"",    
+    "prettier:fix": "prettier --write \"**/*.ts*\"",
     "tsc": "tsc"
   },
   "author": "hirurg-lybitel",
@@ -81,7 +81,7 @@
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react-hooks": "^4.2.0",        
+    "eslint-plugin-react-hooks": "^4.2.0",
     "babel-loader": "^8.2.2",
     "eslint": "^7.28.0",
     "eslint-plugin-prettier": "^3.4.0",
