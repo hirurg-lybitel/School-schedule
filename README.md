@@ -1,6 +1,6 @@
 # Школьное расписание 
 
-![Example](https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.imgonline.com.ua%2Fexamples%2Fbee-on-daisy.jpg&imgrefurl=https%3A%2F%2Fwww.imgonline.com.ua%2Fimpose-picture-on-another-picture.php&tbnid=6FhVWLhHi76P-M&vet=12ahUKEwjO_6yUpoPxAhVI9aQKHVxOCzMQMygCegUIARDVAQ..i&docid=JFJaTfL0feLwCM&w=2560&h=1674&q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B0&client=opera&ved=2ahUKEwjO_6yUpoPxAhVI9aQKHVxOCzMQMygCegUIARDVAQ)
+![Example](https://ibb.co/M246Twt][img]https://i.ibb.co/ngvC2dY/example.png)
 
 Запуск сервера:
 ```bash
