@@ -2,6 +2,7 @@
 
 ![Example](https://github.com/hirurg-lybitel/School-schedule/blob/master/Example/example.png)
 
+# Инструкции
 Запуск сервера:
 ```bash
 api/npm start
