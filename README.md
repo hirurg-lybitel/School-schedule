@@ -3,6 +3,8 @@
 ![Example](https://github.com/hirurg-lybitel/School-schedule/blob/master/Example/example.png)
 
 # Инструкции
+Используетяс база MongoDB, расположенная на [Atlas](https://cloud.mongodb.com/v2/60b3ae2ddea3c44b104940d6#clusters).
+
 Запуск сервера:
 ```bash
 api/npm start
